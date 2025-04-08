@@ -1,6 +1,6 @@
 <?php
 include('connect_db.php');
-if(isset($_POST['submit'])){
+if (isset($_POST['submit'])) {
     $tanggal = $_POST['tanggal'];
     $sales = $_POST['sales'];
     $nama_lead = $_POST['nama_lead'];
@@ -9,7 +9,7 @@ if(isset($_POST['submit'])){
     $kota = $_POST['kota'];
 
     $query = mysqli_query($con, "INSERT INTO leads (tanggal, id_sales, id_produk, no_wa, nama_lead, kota) VALUE ('$tanggal', '$sales', '$produk', '$no_wa', '$nama_lead', '$kota')");
-    if($query){
+    if ($query) {
         echo "<script>alert('Submitted')</script>";
     } else {
         echo "<script>alert('Failed, error detected')</script>";
@@ -19,11 +19,13 @@ if(isset($_POST['submit'])){
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Tambah Leads</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
+
 <body class="bg-gray-100 min-h-screen flex items-center justify-center p-6">
     <div class="bg-white rounded-lg shadow-md p-8 w-full max-w-4xl">
         <div class="flex justify-between items-center mb-6">
@@ -39,13 +41,13 @@ if(isset($_POST['submit'])){
                 <div>
                     <label class="block text-sm font-medium text-gray-700 mb-1">Sales</label>
                     <select name="sales" class="w-full border border-gray-300 rounded px-3 py-2 bg-white focus:outline-none focus:ring focus:ring-blue-300">
-                        <option value="">--Pilih Sales--</option>
+                        <option value="">Pilih Sales</option>
                         <?php
-                            include('connect_db.php');
-                            $sales = mysqli_query($con, "SELECT * FROM sales");
-                            while ($s = mysqli_fetch_array($sales)) {
+                        include('connect_db.php');
+                        $sales = mysqli_query($con, "SELECT * FROM sales");
+                        while ($s = mysqli_fetch_array($sales)) {
                         ?>
-                        <option value="<?php echo $s['id_sales'] ?>"><?php echo $s['nama_sales']?></option>
+                            <option value="<?php echo $s['id_sales'] ?>"><?php echo $s['nama_sales'] ?></option>
                         <?php } ?>
                     </select>
                 </div>
@@ -56,13 +58,13 @@ if(isset($_POST['submit'])){
                 <div>
                     <label class="block text-sm font-medium text-gray-700 mb-1">Produk</label>
                     <select name="produk" class="w-full border border-gray-300 rounded px-3 py-2 bg-white focus:outline-none focus:ring focus:ring-blue-300">
-                        <option value="">--Pilih Produk--</option>
+                        <option value="">Pilih Produk</option>
                         <?php
-                            include('connect_db.php');
-                            $produk = mysqli_query($con, "SELECT * FROM produk");
-                            while ($p = mysqli_fetch_array($produk)) {
+                        include('connect_db.php');
+                        $produk = mysqli_query($con, "SELECT * FROM produk");
+                        while ($p = mysqli_fetch_array($produk)) {
                         ?>
-                        <option value="<?php echo $p['id_produk'] ?>"><?php echo $p['nama_produk']?></option>
+                            <option value="<?php echo $p['id_produk'] ?>"><?php echo $p['nama_produk'] ?></option>
                         <?php } ?>
                     </select>
                 </div>
@@ -82,4 +84,5 @@ if(isset($_POST['submit'])){
         </form>
     </div>
 </body>
+
 </html>

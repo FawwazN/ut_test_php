@@ -8,7 +8,10 @@
 </head>
 <body>
     <div class="flex justify-center items-center h-screen bg-gray-100">
-        <div class="space-y-4">
+        <div class="space-y-4 text-center">
+            <div class="text-xl font-bold text-gray-700">
+                Selamat datang!
+            </div>
             <a href="submit.php" class="block text-center bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
                 Submitting Leads Data
             </a>
